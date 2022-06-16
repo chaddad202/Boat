@@ -14,7 +14,7 @@ scene.add(light);
 
 // Camera
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 80000);
-camera.position.z = 40000;
+camera.position.z = 4100;
 
 
 // renderer
@@ -32,7 +32,7 @@ loader.load('models/s6laaaaay.glb', function(glb) {
         SateModel = glb.scene;
         SateModel.scale.set(52, 52, 52)
         scene.add(SateModel);
-        SateModel.position.set(0, 20000, 0)
+        SateModel.position.set(0, 2000, 0)
         SateModel.rotateX(45)
     },
     undefined,
@@ -42,13 +42,13 @@ loader.load('models/s6laaaaay.glb', function(glb) {
 
 
 // Delta time
-const timeDiff = 0.02 * 100;
+const timeDiff = 0.02 * 10;
 
 
 // Consts
 // air density = p / R*T:p for absolute pressure, R for specific gas constant,T for absolute temperature
 // R_helium= 2.0769, R_hydrogen= 4.124
-const airDensity = (0.0000000001322 / 2.0769 * 2.73) * 100000000;
+const airDensity = ((0.0000000001322) / (2.0769 * 2.73)) * 100;
 console.log(airDensity)
 const speed = 0.04;
 const dragCoefficient = 2.2;
@@ -59,7 +59,7 @@ var gravity = new THREE.Vector3();
 
 
 // starting Velocity
-var curVelocity = new THREE.Vector3(1000, 200, 0);
+var curVelocity = new THREE.Vector3(500, 0, 0);
 var curo = curVelocity.clone()
 
 
@@ -68,7 +68,7 @@ const geometry = new THREE.SphereGeometry(15, 32, 16);
 const material = new THREE.MeshBasicMaterial({ color: 0xFF0000 });
 var satellite = new THREE.Mesh(geometry, material);
 satellite.scale.set(10, 10, 10);
-satellite.position.set(0, 20000, 0);
+satellite.position.set(0, 2000, 0);
 //scene.add(satellite);
 
 
@@ -80,29 +80,28 @@ Earth.scale.set(10, 10, 10)
 Earth.position.set(0, 0, 0)
 scene.add(Earth)
 
-
+camera.lookAt(new THREE.Vector3(Earth.position.x, Earth.position.y, Earth.position.z))
 
 
 
 // Drag force : not stable
 function DragForce(velocity) {
-    var force = (0.5 * airDensity * dragCoefficient * satelitteArea * velocity * velocity) / (massofsatellite * (Earth.position.clone().sub(satellite.position).length()))
+    var force = (0.5 * airDensity * dragCoefficient * satelitteArea * velocity * velocity) / (massofsatellite)
     if (isNaN(force))
         force = 0
     if (force != 0)
         force = force * -1 * velocity / Math.abs(velocity);
-    //console.log(force)
     return force;
 }
 
 
 // GravityForce: The farther the satellite on Earth the less Fg value
 function GravityForce() {
-    var force = EarthMassGravityConst * massofsatellite / (Earth.position.clone().sub(satellite.position).lengthSq())
-    force = force / 10000;
+    var force = (EarthMassGravityConst * massofsatellite) / (Earth.position.clone().sub(satellite.position).lengthSq())
+    force = force / 1000000;
     if (isNaN(force))
         force = 0
-        // console.log(force)
+    console.log(force)
     return force
 }
 
