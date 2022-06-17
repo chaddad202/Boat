@@ -164,14 +164,15 @@ const parameters = {
     mass_satellite: 2500,
     visible: false,
     transfer: 1,
+    timeDiff : 0.2
 }
 EarthFolder.add(parameters, 'mass_earth')
     .onChange(() => {
-        EarthMassGravityConst = parameters.mass_earth * 10000000000000
+        EarthMassGravityConst = parameters.mass_earth 
     })
 EarthFolder.add(parameters, 'Gravity_constant')
     .onChange(() => {
-        EarthMassGravityConst = parameters.Gravity_constant * Math.pow(10, 11)
+        EarthMassGravityConst = parameters.Gravity_constant * 100000000000
     })
 
 EarthFolder.add(parameters, 'airDensity').min(0.5).max(5.5)
@@ -195,9 +196,13 @@ SatelliteFolder.add(parameters, 'visible')
         visible = parameters.visible
     })
 
-
-// Delta time
-const timeDiff = 0.02 * 100;
+    SatelliteFolder.add(parameters,'timeDiff')
+    .onChange(()=>{
+        timeDiff=parameters.timeDiff
+    })
+    
+    // Delta time
+    let timeDiff = parameters.timeDiff;
 
 // Consts
 // air density = p / R*T:p for absolute pressure, R for specific gas constant,T for absolute temperature
@@ -205,8 +210,8 @@ const timeDiff = 0.02 * 100;
 const speed = 0.04;
 const dragCoefficient = 2.2;
 const satelitteArea = 0.0255744
-    // let Gravity_constant = parameters.Gravity_constant
-var EarthMassGravityConst = parameters.Gravity_constant * parameters.mass_earth
+let Gravity_constant = parameters.Gravity_constant
+var EarthMassGravityConst =  parameters.mass_earth
     // console.log('g = ',parameters.Gravity_constant)
     // console.log('earth_mass = ',parameters.mass_earth)
     // let mass_earth = (5.97219 * 10000000000000)
@@ -242,7 +247,7 @@ function DragForce(velocity) {
 
 // GravityForce: The farther the satellite on Earth the less Fg value
 function GravityForce() {
-    var force = EarthMassGravityConst * massofsatellite / (Earth.position.clone().sub(satellite.position).lengthSq())
+    var force = EarthMassGravityConst*Gravity_constant * massofsatellite / (Earth.position.clone().sub(satellite.position).lengthSq())
     force = force / 1000000;
     if (isNaN(force))
         force = 0
@@ -368,6 +373,8 @@ let generateTextOnScreen = () => {
         text += '<br>';
         text += 'Mass of Earth: ' + parameters.mass_earth;
         text += '<br>';
+        text += 'Gravity_constant: ' +  parameters.Gravity_constant;
+    text += '<br>';
         text += 'Satellite position in x: ' + satellite.position.x;
         text += '<br>';
         text += 'Satellite position in y: ' + satellite.position.y;
@@ -382,6 +389,8 @@ let generateTextOnScreen = () => {
         text += '<br>';
         text += 'Thrust: ' + parameters.transfer;
         text += '<br>';
+        text += 'timeDiff: ' +  parameters.timeDiff ;
+    text += '<br>';
         text2.innerHTML = text;
     }
     // animate
@@ -402,9 +411,9 @@ function animate() {
 
         }
 
-        if (parameters.Gravity_constant > (6.6743)) {
-            SateModel.position.set(0, 0, 0)
-        }
+      //  if (parameters.Gravity_constant > (6.6743)) {
+        //    SateModel.position.set(0, 0, 0)
+        //}
         generateTextOnScreen();
         // Update controls
         controls.update()
