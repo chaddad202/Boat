@@ -1,0 +1,11 @@
+Model Information:
+* title:	Buoy
+* source:	https://sketchfab.com/3d-models/buoy-cdd198814e874379b6cd2c0cc06bc22d
+* author:	honix (https://sketchfab.com/honix)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Buoy" (https://sketchfab.com/3d-models/buoy-cdd198814e874379b6cd2c0cc06bc22d) by honix (https://sketchfab.com/honix) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

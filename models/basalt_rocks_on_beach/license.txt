@@ -1,0 +1,11 @@
+Model Information:
+* title:	Basalt rocks on beach
+* source:	https://sketchfab.com/3d-models/basalt-rocks-on-beach-39a49ad24271485a90872c3e631d30d4
+* author:	b_nealie (https://sketchfab.com/b_nealie)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Basalt rocks on beach" (https://sketchfab.com/3d-models/basalt-rocks-on-beach-39a49ad24271485a90872c3e631d30d4) by b_nealie (https://sketchfab.com/b_nealie) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

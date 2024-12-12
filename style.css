@@ -1,8 +1,128 @@
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+*
+{
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: 0px;
+
+}
+
+canvas{
+  position: fixed;
+}
+
+html,
+body
+{
+    overflow: hidden;
+}
+
+.webgl
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    outline: none;
+}
+
+
+
+
+.card{
+  position: relative;
+  z-index: 99;
+  left: 66%;
+  top: 10px;
+  width: 420px;
+  /* height: 350px; */
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(30px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  flex-direction: column;
+}
+.box{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background:inherit;
+  border-bottom:1px solid lightskyblue ;
+  font-weight: 500;
+  height: 20px;
+}
+
+.range{
+  margin-left: 10px;
+width: 260px;
+height: 30px;
+appearance: none;
+outline: none;
+overflow: hidden;
+background: lightblue;
+
+}
+
+.range::-webkit-slider-thumb{
+   appearance: none;
+   width: 15px;
+   height: 30px;
+   background: blue;
+   box-shadow: -400px 0 0 400px blue;
+}
+
+#reandevalue{
+  position: relative;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  width: 65px;
+  font-size: 1.25em;
+  color: white;
+  background: #27a0ff;
+  margin-left: 15px;
+  border-radius: 25px;
+  font-weight: 500;
+}
+
+.name{
+  padding: 0;
+  width: 29px;
+  position: relative;
+  left: -10px;
+  background: inherit;
+}
+
+.select{
+  width: 100%;
+  height: 40px;
+  background: inherit;
+  margin-bottom: 10px;
+  margin-top: 5px;
+  border: none;
+  
+}
+
+.boxconst{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 415px;
+  border-top:1px solid lightskyblue;
+  padding: 10px;
+}
+
+.boxconst input{
+  width: 245px;
+border: none;
+color: black;
+border-radius: 5px;
+}
+
+
+.cr{
+position: relative;
+top: 20px;
 }

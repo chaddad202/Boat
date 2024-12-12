@@ -1,0 +1,31 @@
+//road
+gltfLoader.load(
+  "/models/airport (1)/scene.gltf",
+
+  (gltf) => {
+    console.log(gltf);
+    gltf.scene.scale.set(0.5, 0.1, 0.05);
+    gltf.scene.position.set(554, 0.3, 45);
+    // gltf.scene.rotation.y= Math.PI
+    scene.add(gltf.scene);
+    //gui.add(gltf.scene.rotation,'y').min(-Math.PI).max(Math.PI).step(0.001).name('Rotation')
+  }
+);
+
+//plane Model
+const loader = new GLTFLoader();
+var PlaneModel;
+loader.load(
+  "/models/boeing_737-800/scene.gltf",
+  function (gltf) {
+    PlaneModel = gltf.scene;
+    PlaneModel.scale.set(0.1, 0.1, 0.1);
+    PlaneModel.position.set(20, 2.8, 30);
+    PlaneModel.rotation.y = Math.PI * 0.5;
+    scene.add(PlaneModel);
+  },
+  undefined,
+  function (error) {
+    console.error(error);
+  }
+);
